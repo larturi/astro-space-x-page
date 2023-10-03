@@ -1,9 +1,10 @@
 ---
-import HeaderButton from './HeaderButton.astro';
+import HeaderButton from './HeaderButton.astro'
+import Counter from './Counter'
 ---
 
-<header class='py-8 px-4 mx-auto lg:py-16 lg:px-6'>
-   <div class='mx-auto text-center mb-8 lg:mb-16'>
+<header transition:persist class='py-8 px-1 mx-auto lg:py-16 lg:px-6'>
+   <div class='mx-auto text-center mb-8 lg:mb-6'>
       <h2 class='mb-4 text-5xl tracking-tight font-extrabold text-white'>
          SpaceX Launces
       </h2>
@@ -12,14 +13,16 @@ import HeaderButton from './HeaderButton.astro';
       </p>
    </div>
 
+   <!-- <Counter client:visible /> -->
+
    <nav
       class='flex flex-col items-center justify-center w-full text-center md:flex-row'
    >
-      <HeaderButton class='text-white' href='/'>
+      <HeaderButton href='/'>
          <svg
             slot='before-text'
-            width='48'
-            height='48'
+            width='32'
+            height='32'
             viewBox='0 0 24 24'
             stroke-width='2'
             stroke='currentColor'
@@ -37,11 +40,11 @@ import HeaderButton from './HeaderButton.astro';
           Ultimos lanzamientos
       </HeaderButton>
 
-      <HeaderButton class='text-white' href='/oldest'>
+      <HeaderButton href='/oldest'>
          <svg
             slot='before-text'
-            width='48'
-            height='48'
+            width='32'
+            height='32'
             viewBox='0 0 24 24'
             stroke-width='2'
             stroke='currentColor'
@@ -60,11 +63,11 @@ import HeaderButton from './HeaderButton.astro';
           Antiguos lanzamientos
       </HeaderButton>
 
-      <HeaderButton class='text-white' href='/about'>
+      <HeaderButton href='/about'>
          <svg
             slot='before-text'
-            width='48'
-            height='48'
+            width='32'
+            height='32'
             viewBox='0 0 24 24'
             stroke-width='2'
             stroke='currentColor'

@@ -1,9 +1,20 @@
 ---
 import CardLaunch from './CardLaunch.astro';
+import { getLatestLaunches, getOldLaunches } from '../services/spacex'
 
-import { getLatestLaunches } from '../services/spacex'
+interface Props {
+    showOldLaunches: boolean
+}
 
-const launches = await getLatestLaunches()
+const { showOldLaunches } = Astro.props  
+
+let launches
+
+if(showOldLaunches) {
+   launches = await getOldLaunches()
+} else {
+   launches = await getLatestLaunches()
+}
 ---
 
 <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">

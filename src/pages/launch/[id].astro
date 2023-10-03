@@ -1,7 +1,10 @@
 ---
 import { getLatestLaunchById, getLatestLaunches } from '../../services/spacex'
 import Layout from "../../layouts/Layout.astro"
-import CardLaunch from '../../components/CardLaunch.astro'
+
+// Solo si quiero server side rendering
+// export const prerender = false
+
 const { id } = Astro.params
 
 const launch = await getLatestLaunchById(id!)
@@ -19,11 +22,13 @@ export async function getStaticPaths() {
 
 
 <Layout title={`Launch #${launch.id}`}>
-    <CardLaunch 
-        id={launch.id}
-        img={launch.links.patch.small}
-        details={launch.details}
-        flightNumber={launch.flight_number}
-        success={launch.success}
-    />
+    <article class="flex gap-y-4 flex-col">
+        <img
+            class="w-52 h-auto"
+            src={launch?.links.patch.small}
+            alt={launch?.name}
+        >
+        <h2 class="text-4xl text-white font-bold">Launch #{launch.flight_number}</h2>
+        <p class="text-lg text-white">{launch?.details}</p>
+    </article>
 </Layout>
